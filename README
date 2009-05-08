@@ -1,10 +1,18 @@
 HasPhoneNumber
 ==============
 
-HasPhoneNumber makes validations for US phone numbers (currently without extensions) in ActiveRecord easy.
+HasPhoneNumber makes validations for US phone numbers in ActiveRecord models easy.
+Just make sure your model has a string attribute to store your phone number, and
+then pass it on to has_phone_number.
 
   class Person < ActiveRecord::Base
     has_phone_number :cell_phone
   end
+  
+You're done! This will ensure that the phone number in cell_phone is of a valid US
+phone number format, and invalidate Person if the phone number is invalid. Oh, it
+will also play nice with form_for, so you can display the errors to your users.
+
+Hope you like it!
 
 Copyright (c) 2009 [Vladimir Andrijevik], released under the MIT license
