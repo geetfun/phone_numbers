@@ -1,13 +1,10 @@
 HasPhoneNumber
 ==============
 
-Introduction goes here.
+HasPhoneNumber makes validations for US phone numbers (currently without extensions) in ActiveRecord easy.
 
+  class Person < ActiveRecord::Base
+    has_phone_number :cell_phone
+  end
 
-Example
-=======
-
-Example goes here.
-
-
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+Copyright (c) 2009 [Vladimir Andrijevik], released under the MIT license
