@@ -14,6 +14,12 @@ class HasPhoneNumberTest < ActiveSupport::TestCase
       assert_respond_to @person, :cell_phone_as_phone_number
     end # respond to "#{phone_number_attribute}_as_phone_number"
     
+    should "not be valid if the value object is not valid" do
+      @person.cell_phone_as_phone_number = HasPhoneNumber::PhoneNumber.new("123")
+      
+      deny @person.valid?
+    end # not be valid if the value object is not valid
+    
     context "with a nil phone_number_attribute" do
       should 'return nil when responding to "#{phone_number_attribute}_as_phone_number"' do
         assert_nil @person.cell_phone_as_phone_number

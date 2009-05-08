@@ -9,6 +9,7 @@ module HasPhoneNumber
     
     def initialize(number)
       @number = number
+      @errors = ActiveRecord::Errors.new(self)
     end
   end
 end

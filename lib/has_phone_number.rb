@@ -7,6 +7,7 @@ module HasPhoneNumber
                   :class_name => "HasPhoneNumber::PhoneNumber",
                   :mapping => [attribute.to_s, "number"],
                   :allow_nil => true
+      validates_associated "#{attribute}_as_phone_number".intern
     end
   end # ClassMethods
 end # HasPhoneNumber
