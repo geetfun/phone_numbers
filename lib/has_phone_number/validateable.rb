@@ -20,12 +20,12 @@ module Validateable
   end # ClassMethods
   
   module InstanceMethods
-    [:save, :save!, :update_attribute].each do |method_name|
+    [:save, :save!, :update_attribute, :new_record?].each do |method_name|
       define_method(method_name) {}
     end
     
     def method_missing(symbol, *params)
-      send($1) if symbol.to_s =~ /(.*)_before_type_cast$/
+      symbol.to_s =~ /(.*)_before_type_cast$/ ? send($1) : super
     end
   end # InstanceMethods
 end # Validateable

@@ -1,1 +1,1 @@
-# Include hook code here
+require 'has_phone_number'
