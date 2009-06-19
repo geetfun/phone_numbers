@@ -1,5 +1,5 @@
 ActiveRecord::Schema.define(:version => 1) do
-  create_table :people, :force => true do |t|
-    t.string :cell_phone
+  create_table :offices, :force => true do |t|
+    t.string :main, :abroad, :chicago, :boston, :paris, :lyon
   end
 end
