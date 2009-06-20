@@ -3,7 +3,7 @@ module HasPhoneNumber
 
   module ClassMethods
     def has_phone_number(*attr_names)
-      setup_number_formats_registry
+      setup_number_formats_mapping
       
       phone_number_format = attr_names.extract_options![:format]
       record_number_format(attr_names, phone_number_format)
@@ -13,7 +13,7 @@ module HasPhoneNumber
     end
   
   private
-    def setup_number_formats_registry
+    def setup_number_formats_mapping
       unless respond_to?(:number_formats) && respond_to?(:number_formats=)
         class_inheritable_hash :number_formats
         self.number_formats = {}
@@ -43,7 +43,7 @@ module HasPhoneNumber
       
       validates_each(attr_names, configuration) do |record, attr_name, value|
         unless value.nil? || value.valid?
-          original_attr_name = attr_name.to_s.gsub(/_as_phone_number$/, "").intern
+          original_attr_name = attr_name.to_s.gsub(/_as_phone_number$/, "").to_sym
           record.errors.add(original_attr_name, :invalid, :default => configuration[:message], :value => value)
         end
       end

@@ -46,7 +46,7 @@ class HasPhoneNumberTest < ActiveSupport::TestCase
     
     context "whose value object is invalid" do
       setup do
-        @office.main_as_phone_number = HasPhoneNumber::PhoneNumber.new("123")
+        @office.main_as_phone_number = stub(:number => "123", :valid? => false)
       end
       
       should("not be valid") { deny @office.valid? }
@@ -81,7 +81,7 @@ class HasPhoneNumberTest < ActiveSupport::TestCase
     
     context "with a set value object" do
       setup do
-        @office.main_as_phone_number = HasPhoneNumber::PhoneNumber.new("123")
+        @office.main_as_phone_number = stub(:number => "123")
       end
       
       should "have an attribute value that matches the number of the value object" do

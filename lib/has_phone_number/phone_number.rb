@@ -3,11 +3,18 @@ module HasPhoneNumber
 
   class PhoneNumber
     include Validateable
+
+    class_inheritable_hash :formats
+    self.formats = {:us => /^(\(\d{3}\) |\d{3}[- ])\d{3}[- ]?\d{4}$/}
     
     attr_reader :number, :number_format
-    validates_format_of :number, :with => /^(\(\d{3}\) |\d{3}[- ])\d{3}[- ]?\d{4}$/
+    validates_each(:number) do |record, attr_name, value|
+      unless record.formats[record.number_format].match(value)
+        record.errors.add(attr_name, :invalid, :value => value)
+      end
+    end
     
-    def initialize(number, number_format=nil)
+    def initialize(number, number_format)
       @number = number
       @number_format = number_format
       @errors = ActiveRecord::Errors.new(self)
