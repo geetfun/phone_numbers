@@ -52,4 +52,4 @@ module HasPhoneNumber
   
 end # HasPhoneNumber
 
-ActiveRecord::Base.class_eval { extend HasPhoneNumber::ClassMethods }
+ActiveRecord::Base.class_eval { extend HasPhoneNumber::ClassMethods } if defined?(ActiveRecord::Base)
