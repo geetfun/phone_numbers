@@ -1,14 +1,14 @@
 HasPhoneNumber
 ==============
 
-HasPhoneNumber makes phone numbers in ActiveRecord easy. Make sure your model
-has a string attribute to store your phone number, and pass it to `has_phone_number`,
-and you're done!
+HasPhoneNumber makes phone number validations in ActiveRecord easy. Make sure your model
+has a string attribute to store your phone number, pass it to `has_phone_number`, and
+you're done!
 
     class Person < ActiveRecord::Base
       has_phone_number :cell_phone
     end
-  
+
 This will ensure that the phone number in `cell_phone` is of a valid phone number
 format, and invalidate Person if the phone number is invalid. It will also play
 nice with `form_for`, so you can display the errors to your users.
@@ -29,7 +29,7 @@ If, however you want to validate against a different phone number format, you ca
       has_phone_number :main, :format => :us
       has_phone_number :abroad, :format => :france
     end
-    
+
 This will validate the `main` attribute against a US number format (included),
 and `abroad` against a France number format (if you've specified it).
 
