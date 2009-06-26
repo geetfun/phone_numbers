@@ -11,10 +11,9 @@ Gem::Specification.new do |spec|
   spec.homepage = %q{http://github.com/vandrijevik/has_phone_number/}
   spec.summary = %q{a phone number validator for ActiveRecord}
 
-  spec.files = ["has_phone_number.gemspec",
-                "has_phone_number/phone_number.rb",
-                "has_phone_number/validateable.rb",
-                "has_phone_number.rb",
+  spec.files = ["lib/has_phone_number/phone_number.rb",
+                "lib/has_phone_number/validateable.rb",
+                "lib/has_phone_number.rb",
                 "MIT-LICENSE",
                 "Rakefile",
                 "README.markdown"]
