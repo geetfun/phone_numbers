@@ -7,7 +7,7 @@ require 'shoulda'
 
 require 'config/environment'
 require 'db/schema'
-require File.join(File.dirname(__FILE__), "..", "init.rb")
+require 'has_phone_number'
 
 class ActiveSupport::TestCase
   def deny(expression)
