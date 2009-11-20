@@ -15,16 +15,16 @@ class HasPhoneNumberTest < ActiveSupport::TestCase
       assert_respond_to @office, :main_as_phone_number
     end # respond to main_as_phone_number
     
-    should "have a number_formats registry" do
-      assert_respond_to Office, :number_formats
-    end # have a number_formats registry
-    
     should "allow specifying a format for the phone number" do
-      assert_equal :uk, Office.number_formats[:abroad]
+      @office.abroad = "123"
+      
+      assert_equal :uk, @office.abroad_as_phone_number.number_format
     end # allow specifying a format for the phone number
     
     should "default the phone number format to :us" do
-      assert_equal :us, Office.number_formats[:main]
+      @office.main = "123"
+      
+      assert_equal :us, @office.main_as_phone_number.number_format
     end # default the phone number format to :us
     
     should "allow specifying more than one phone number attribute in a single call" do
@@ -33,8 +33,11 @@ class HasPhoneNumberTest < ActiveSupport::TestCase
     end # allow specifying more than one phone number attribute in a single call
     
     should "register the correct format for all phone numbers specified in a single call" do
-      assert_equal :france, Office.number_formats[:paris]
-      assert_equal :france, Office.number_formats[:lyon]
+      [:paris, :lyon].each do |phone_number|
+        @office.send "#{phone_number}=", "123"
+        
+        assert_equal :france, @office.send("#{phone_number}_as_phone_number").number_format
+      end
     end # apply the correct format to all phone numbers specified in a single call
     
     should "validate all phone numbers specified in a single call" do
