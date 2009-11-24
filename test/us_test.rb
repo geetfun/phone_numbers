@@ -1,10 +1,10 @@
 require 'test_helper'
-require 'has_phone_number/phone_number'
+require 'phone_numbers/phone_number'
 
 class UsTest < ActiveSupport::TestCase
   context "An US Phone Number" do
     setup do
-      @format = HasPhoneNumber::PhoneNumber.formats[:us]
+      @format = PhoneNumbers::PhoneNumber.formats[:us]
     end
     
     context "with less than 10 digits" do

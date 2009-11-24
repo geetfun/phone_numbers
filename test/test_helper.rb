@@ -7,7 +7,7 @@ require 'shoulda'
 
 require 'config/environment'
 require 'db/schema'
-require 'has_phone_number'
+require 'phone_numbers'
 
 class ActiveSupport::TestCase
   def deny(expression)

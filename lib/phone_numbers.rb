@@ -1,8 +1,8 @@
-module HasPhoneNumber
-  autoload :PhoneNumber, 'has_phone_number/phone_number'
+module PhoneNumbers
+  autoload :PhoneNumber, 'phone_numbers/phone_number'
 
   module ClassMethods
-    def has_phone_number(*attr_names)
+    def phone_numbers(*attr_names)
       phone_number_format = attr_names.extract_options![:format] || :us
       
       setup_aggregations(attr_names, phone_number_format)
@@ -14,10 +14,10 @@ module HasPhoneNumber
     def setup_aggregations(attr_names, phone_number_format)
       attr_names.each do |attribute_name|
         composed_of "#{attribute_name}_as_phone_number".intern,
-                    :class_name => "HasPhoneNumber::PhoneNumber",
+                    :class_name => "PhoneNumbers::PhoneNumber",
                     :mapping => [attribute_name, "number"],
                     :allow_nil => true,
-                    :constructor => Proc.new { |phone_number| HasPhoneNumber::PhoneNumber.new(phone_number, phone_number_format) }
+                    :constructor => Proc.new { |phone_number| PhoneNumbers::PhoneNumber.new(phone_number, phone_number_format) }
       end
     end
     
@@ -34,6 +34,6 @@ module HasPhoneNumber
     end
   end # ClassMethods
   
-end # HasPhoneNumber
+end # PhoneNumbers
 
-ActiveRecord::Base.class_eval { extend HasPhoneNumber::ClassMethods } if defined?(ActiveRecord::Base)
+ActiveRecord::Base.class_eval { extend PhoneNumbers::ClassMethods } if defined?(ActiveRecord::Base)

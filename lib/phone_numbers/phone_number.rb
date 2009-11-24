@@ -1,4 +1,4 @@
-module HasPhoneNumber
+module PhoneNumbers
   autoload :Validateable, File.join(File.dirname(__FILE__), "validateable")
 
   class PhoneNumber

@@ -1,13 +1,13 @@
 require 'test_helper'
 
 class Office < ActiveRecord::Base
-  has_phone_number :main
-  has_phone_number :abroad, :format => :uk
-  has_phone_number :chicago, :boston
-  has_phone_number :paris, :lyon, :format => :france
+  phone_numbers :main
+  phone_numbers :abroad, :format => :uk
+  phone_numbers :chicago, :boston
+  phone_numbers :paris, :lyon, :format => :france
 end
 
-class HasPhoneNumberTest < ActiveSupport::TestCase
+class PhoneNumbersTest < ActiveSupport::TestCase
   context "An object with phone numbers" do
     setup { @office = Office.new }
     
@@ -70,7 +70,7 @@ class HasPhoneNumberTest < ActiveSupport::TestCase
       setup { @office.main = "1" }
       
       should "have a set value object" do
-        assert_kind_of HasPhoneNumber::PhoneNumber, @office.main_as_phone_number
+        assert_kind_of PhoneNumbers::PhoneNumber, @office.main_as_phone_number
       end
       
       should "set the number of the value object to the value of the phone attribute" do
