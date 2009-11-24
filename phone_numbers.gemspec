@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{phone_numbers}
-  s.version = "1.1.1"
+  s.version = "1.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Vladimir Andrijevik"]
@@ -22,17 +22,19 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION.yml",
      "lib/phone_numbers.rb",
-     "lib/phone_numbers/phone_number.rb",
+     "lib/phone_numbers/class_methods.rb",
+     "lib/phone_numbers/formats.rb",
+     "lib/phone_numbers/number.rb",
      "lib/phone_numbers/validateable.rb",
      "phone_numbers.gemspec",
-     "test/config/boot.rb",
-     "test/config/database.yml",
-     "test/config/environment.rb",
-     "test/config/environments/test.rb",
-     "test/config/routes.rb",
-     "test/db/schema.rb",
-     "test/has_phone_number_test.rb",
-     "test/phone_number_test.rb",
+     "test/class_methods_test.rb",
+     "test/mock_app/config/boot.rb",
+     "test/mock_app/config/database.yml",
+     "test/mock_app/config/environment.rb",
+     "test/mock_app/config/environments/test.rb",
+     "test/mock_app/config/routes.rb",
+     "test/mock_app/db/schema.rb",
+     "test/number_test.rb",
      "test/test_helper.rb",
      "test/us_test.rb"
   ]
@@ -42,13 +44,13 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Phone number management in ActiveRecord made easy.}
   s.test_files = [
-    "test/config/boot.rb",
-     "test/config/environment.rb",
-     "test/config/environments/test.rb",
-     "test/config/routes.rb",
-     "test/db/schema.rb",
-     "test/has_phone_number_test.rb",
-     "test/phone_number_test.rb",
+    "test/class_methods_test.rb",
+     "test/mock_app/config/boot.rb",
+     "test/mock_app/config/environment.rb",
+     "test/mock_app/config/environments/test.rb",
+     "test/mock_app/config/routes.rb",
+     "test/mock_app/db/schema.rb",
+     "test/number_test.rb",
      "test/test_helper.rb",
      "test/us_test.rb"
   ]
