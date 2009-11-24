@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'phone_numbers/class_methods'
 
 class Office < ActiveRecord::Base
   phone_numbers :main
@@ -7,7 +8,7 @@ class Office < ActiveRecord::Base
   phone_numbers :paris, :lyon, :format => :france
 end
 
-class PhoneNumbersTest < ActiveSupport::TestCase
+class ClassMethodsTest < ActiveSupport::TestCase
   context "An object with phone numbers" do
     setup { @office = Office.new }
     
@@ -70,7 +71,7 @@ class PhoneNumbersTest < ActiveSupport::TestCase
       setup { @office.main = "1" }
       
       should "have a set value object" do
-        assert_kind_of PhoneNumbers::PhoneNumber, @office.main_as_phone_number
+        assert_kind_of PhoneNumbers::Number, @office.main_as_phone_number
       end
       
       should "set the number of the value object to the value of the phone attribute" do

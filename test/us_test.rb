@@ -1,11 +1,9 @@
 require 'test_helper'
-require 'phone_numbers/phone_number'
+require 'phone_numbers/number'
 
 class UsTest < ActiveSupport::TestCase
-  context "An US Phone Number" do
-    setup do
-      @format = PhoneNumbers::PhoneNumber.formats[:us]
-    end
+  context "A US Phone Number" do
+    setup { @format = PhoneNumbers::Number.formats[:us] }
     
     context "with less than 10 digits" do
       setup { @phone_number = "(312) 456-789" }
@@ -56,5 +54,5 @@ class UsTest < ActiveSupport::TestCase
         end # followed by a space, and the exchange is followed by a hyphen
       end # where the area code is in parentheses
     end # with 10 digits
-  end # A Phone Number
+  end # A US Phone Number
 end

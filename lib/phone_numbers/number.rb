@@ -1,7 +1,7 @@
 module PhoneNumbers
-  autoload :Validateable, File.join(File.dirname(__FILE__), "validateable")
+  autoload :Validateable, "phone_numbers/validateable"
 
-  class PhoneNumber
+  class Number
     include Validateable
 
     class_inheritable_hash :formats

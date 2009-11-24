@@ -5,9 +5,8 @@ require 'active_record'
 require 'test/unit'
 require 'shoulda'
 
-require 'config/environment'
-require 'db/schema'
-require 'phone_numbers'
+require 'mock_app/config/environment'
+require 'mock_app/db/schema'
 
 class ActiveSupport::TestCase
   def deny(expression)
