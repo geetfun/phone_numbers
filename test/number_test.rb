@@ -9,7 +9,7 @@ class NumberTest < ActiveSupport::TestCase
     
     context "whose number matches its format" do
       setup do
-        PhoneNumbers::Number.formats[:test].expects(:match).returns(stub("matchdata_stub"))
+        PhoneNumbers.formats[:test].expects(:match).returns(stub("matchdata_stub"))
       end
       
       should("be valid") { assert @phone_number.valid? }
@@ -17,7 +17,7 @@ class NumberTest < ActiveSupport::TestCase
     
     context "whose number does not match its format" do
       setup do
-        PhoneNumbers::Number.formats[:test].expects(:match).returns(nil)
+        PhoneNumbers.formats[:test].expects(:match).returns(nil)
       end
 
       should("not be valid") { deny @phone_number.valid? }

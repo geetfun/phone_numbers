@@ -1,9 +1,9 @@
-require 'test_helper'
-require 'phone_numbers/number'
+require "test_helper"
+require "phone_numbers/formats"
 
 class UsTest < ActiveSupport::TestCase
   context "A US Phone Number" do
-    setup { @format = PhoneNumbers::Number.formats[:us] }
+    setup { @format = PhoneNumbers.formats[:us] }
     
     context "with less than 10 digits" do
       setup { @phone_number = "(312) 456-789" }

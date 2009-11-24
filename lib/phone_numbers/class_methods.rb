@@ -16,7 +16,7 @@ module PhoneNumbers
       attr_names.each do |attribute_name|
         composed_of "#{attribute_name}_as_phone_number".intern,
                     :class_name => "PhoneNumbers::Number",
-                    :mapping => [attribute_name, "number"],
+                    :mapping => [attribute_name, "entry"],
                     :allow_nil => true,
                     :constructor => Proc.new { |phone_number| PhoneNumbers::Number.new(phone_number, phone_number_format) }
       end

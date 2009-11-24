@@ -26,16 +26,16 @@ class ClassMethodsTest < ActiveSupport::TestCase
       assert_respond_to @office, :main_as_phone_number
     end # respond to main_as_phone_number
     
-    should "allow specifying a format a the phone number" do
+    should "allow specifying a format for the phone number" do
       @office.abroad = "123"
       
-      assert_equal :uk, @office.abroad_as_phone_number.number_format
-    end # allow specifying a format a the phone number
+      assert_equal :uk, @office.abroad_as_phone_number.format
+    end # allow specifying a format for the phone number
     
     should "default a phone number's format to :us" do
       @office.main = "123"
       
-      assert_equal :us, @office.main_as_phone_number.number_format
+      assert_equal :us, @office.main_as_phone_number.format
     end # default a phone number's format to :us
     
     should "allow specifying more than one phone number attribute in a single call" do
@@ -47,7 +47,7 @@ class ClassMethodsTest < ActiveSupport::TestCase
       [:paris, :lyon].each do |phone_number|
         @office.send "#{phone_number}=", "123"
         
-        assert_equal :france, @office.send("#{phone_number}_as_phone_number").number_format
+        assert_equal :france, @office.send("#{phone_number}_as_phone_number").format
       end
     end # apply the correct format to all phone numbers specified in a single call
     
@@ -71,21 +71,21 @@ class ClassMethodsTest < ActiveSupport::TestCase
         assert_kind_of PhoneNumbers::Number, @office.main_as_phone_number
       end
       
-      should "set the number of the value object to the string attribute" do
-        assert_equal @office.main, @office.main_as_phone_number.number
-      end # set the number of the value object to the string attribute
+      should "set the entry of the value object to the string attribute" do
+        assert_equal @office.main, @office.main_as_phone_number.entry
+      end # set the entry of the value object to the string attribute
       
       should "set the value object to the appropriate number format" do
-        assert_equal :us, @office.main_as_phone_number.number_format
+        assert_equal :us, @office.main_as_phone_number.format
       end # set the value object to the appropriate number format
     end # with a set phone attribute
     
     context "with a set value object" do
-      setup { @office.main_as_phone_number = stub(:number => "123") }
+      setup { @office.main_as_phone_number = stub(:entry => "123") }
       
-      should "have a string attribute equal to the number of the value object" do
-        assert_equal @office.main_as_phone_number.number, @office.main
-      end # have a string attribute equal to the number of the value object
+      should "have a string attribute equal to the entry of the value object" do
+        assert_equal @office.main_as_phone_number.entry, @office.main
+      end # have a string attribute equal to the entry of the value object
       
       context "that is invalid" do
         setup { @office.main_as_phone_number.stubs(:valid? => false) }
