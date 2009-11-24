@@ -9,6 +9,7 @@ module PhoneNumbers
       
       validates_as_phone_number attr_names.map {|attribute_name| "#{attribute_name}_as_phone_number".to_sym}
     end
+    alias_method :phone_number, :phone_numbers
   
   private
     def setup_aggregations(attr_names, phone_number_format)
