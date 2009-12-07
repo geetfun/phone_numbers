@@ -36,7 +36,7 @@ and `abroad` against a France number format (if you've specified it).
 Specifying Formats
 ------------------
 
-Format names and specifications are stored in the PhoneNumbers::Number.formats hash.
+Format names and specifications are stored in the PhoneNumbers.formats hash.
 The key is a symbol (that can be used with the :format option to `phone_numbers`),
 and the value is a regular expression that the attribute is matched against.
 
