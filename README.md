@@ -1,9 +1,9 @@
 PhoneNumbers
 ============
 
-PhoneNumbers makes phone number validations in ActiveRecord easy. Make sure your model
-has a string attribute to store your phone number, pass it to `phone_numbers`, and
-you're done!
+PhoneNumbers simplifies management of phone number attributes in ActiveRecord models.
+Add a string field to your model to hold the phone number, pass it to `phone_numbers`,
+and you're done!
 
     class Person < ActiveRecord::Base
       phone_numbers :cell_phone

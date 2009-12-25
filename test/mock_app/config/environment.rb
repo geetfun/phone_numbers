@@ -8,7 +8,4 @@ require File.join(File.dirname(__FILE__), 'boot')
  
 Rails::Initializer.run do |config|
   config.frameworks -= [ :active_resource, :action_mailer, :action_controller, :action_view ]
- 
-  config.gem 'sqlite3-ruby', :lib => 'sqlite3'
-  config.gem 'thoughtbot-shoulda', :lib => 'shoulda/rails', :source => 'http://gems.github.com'
 end
